@@ -6,7 +6,10 @@ To run the case, you can use custom commands:
 or the default way:  
 ```npx cypress run```  to run the case on Electron in headless mode 
 or  
-``npx cypress open``` open the app to run the spec
+```npx cypress open``` open the app to run the spec
 
 
-In the case, I add 3 commands in */support/e2e.js for common use.
+In the case, I add 3 commands in */support/e2e.js for common use.  
+There's a uncaught error when running two of the commands, so I just add a on to ignore it.   
+I try to add a teardown for the case but it fails so I just add another case to delete the data.
+
