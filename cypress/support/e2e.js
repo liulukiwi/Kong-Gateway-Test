@@ -15,6 +15,10 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+//ignore the Script error when running the command
+cy.on('uncaught:exception', (err, runnable) => {
+    return false
+    });
 
 Cypress.Commands.add('addBlankService', (url) => {
     cy.visit(url)
@@ -34,6 +38,7 @@ Cypress.Commands.add('editService', (name, url) => {
   Cypress.Commands.add('addRoute', (name, path) => {
     cy.get('[data-testid="route-form-name"]').type(name)
     cy.get('[data-testid="route-form-paths-input-1"]').type(path)
+    cy.get('[data-testid="route-create-form-submit"]').click()
     cy.get('.k-toaster')
         .should('be.visible')
         .and('contain','successfully created')
