@@ -15,10 +15,6 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-//ignore the Script error when running the command
-cy.on('uncaught:exception', (err, runnable) => {
-    return false
-    });
 
 Cypress.Commands.add('addBlankService', (url) => {
     cy.visit(url)
@@ -26,20 +22,40 @@ Cypress.Commands.add('addBlankService', (url) => {
   })
 
 Cypress.Commands.add('editService', (name, url) => {
+    cy.on('uncaught:exception', (e) => {
+        if (e.message.includes('uncaught:exception')) {
+          // we expected this error, so let's ignore it
+          // and let the test continue
+          return false
+        }
+        // on any other error message the test fails
+      })
+    
     cy.get('[data-testid="gateway-service-name-input"]').type(name)
     cy.get('[data-testid="gateway-service-url-input"]').type(url)
-    cy.get('[data-testid="service-create-form-submit"]').click()	
+    cy.get('[data-testid="service-create-form-submit"]').click()
     cy.get('.k-toaster')
         .should('be.visible')
         .and('contain','successfully created')
+        .and('contain',name)
 
   })
 
   Cypress.Commands.add('addRoute', (name, path) => {
+    cy.on('uncaught:exception', (e) => {
+        if (e.message.includes('uncaught:exception')) {
+          // we expected this error, so let's ignore it
+          // and let the test continue
+          return false
+        }
+        // on any other error message the test fails
+      })
+    
     cy.get('[data-testid="route-form-name"]').type(name)
     cy.get('[data-testid="route-form-paths-input-1"]').type(path)
     cy.get('[data-testid="route-create-form-submit"]').click()
     cy.get('.k-toaster')
         .should('be.visible')
         .and('contain','successfully created')
+        .and('contain',name)
   })
