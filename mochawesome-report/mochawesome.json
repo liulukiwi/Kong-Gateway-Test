@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-03-25T02:06:58.401Z",
+    "end": "2025-03-25T02:07:01.872Z",
+    "duration": 3471,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "3851b195-2e19-4019-8f52-453210e97c94",
+      "title": "",
+      "fullFile": "cypress/e2e/spec.cy.js",
+      "file": "cypress/e2e/spec.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1e1c656d-c831-4ae3-b083-99b20f744902",
+          "title": "service spec",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add a route to a new service in default workspace",
+              "fullTitle": "service spec Add a route to a new service in default workspace",
+              "timedOut": null,
+              "duration": 3431,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.addBlankService('/default/services');\ncy.editService('TestName', 'https://httpbin.konghq.com');\ncy.get('[data-testid=\"service-create-form-submit\"]');\ncy.get('[class*=\"add-route-btn\"]').click();\ncy.addRoute('mocking', '/mock');",
+              "err": {},
+              "uuid": "d704ef96-a8c9-4ea6-b462-3c98e588e56d",
+              "parentUUID": "1e1c656d-c831-4ae3-b083-99b20f744902",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d704ef96-a8c9-4ea6-b462-3c98e588e56d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3431,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

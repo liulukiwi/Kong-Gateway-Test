@@ -1,0 +1,25 @@
+{
+  "name": "kong-gateway-test",
+  "version": "1.0.0",
+  "description": "This is a assignment of Kong",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "e2e:chrome": "cypress run --browser chrome --headed",
+    "e2e:report": "cypress run --reporter mochawesome --browser chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liulukiwi/Kong-Gateway-Test.git"
+  },
+  "author": "Lu Liu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liulukiwi/Kong-Gateway-Test/issues"
+  },
+  "homepage": "https://github.com/liulukiwi/Kong-Gateway-Test#readme",
+  "devDependencies": {
+    "cypress": "^14.2.0",
+    "mochawesome": "^7.1.3"
+  }
+}
