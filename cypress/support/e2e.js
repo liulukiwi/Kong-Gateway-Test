@@ -17,6 +17,14 @@
 import './commands'
 
 Cypress.Commands.add('addBlankService', (url) => {
+    cy.on('uncaught:exception', (e) => {
+        if (e.message.includes('uncaught:exception')) {
+          // we expected this error, so let's ignore it
+          // and let the test continue
+          return false
+        }
+        // on any other error message the test fails
+      })
     cy.visit(url)
     cy.get('[data-testid="empty-state-action"]').click()
   })
@@ -58,4 +66,32 @@ Cypress.Commands.add('editService', (name, url) => {
         .should('be.visible')
         .and('contain','successfully created')
         .and('contain',name)
+  })
+
+  Cypress.Commands.add('deleteService', (name,path,url) => {
+    cy.on('uncaught:exception', (e) => {
+        if (e.message.includes('uncaught:exception')) {
+          // we expected this error, so let's ignore it
+          // and let the test continue
+          return false
+        }
+        // on any other error message the test fails
+      })
+    cy.visit(url)
+    cy.get('tbody').click()
+    cy.get('[data-testid="service-routes"]').click()
+    cy.get('[data-testid="row-actions-dropdown-trigger"]').click()
+    cy.get('[data-testid="action-entity-delete"]').click()
+    cy.get('[data-testid="confirmation-input"]').type(path)
+    cy.get('[data-testid="modal-action-button"]').click()
+    cy.visit(url)
+    cy.get('[data-testid="row-actions-dropdown-trigger"]').click()
+    cy.get('[data-testid="action-entity-delete"]').click()
+    cy.get('[data-testid="confirmation-input"]').type(name)
+    cy.get('[data-testid="modal-action-button"]').click()
+    cy.get('.k-toaster')
+        .should('be.visible')
+        .and('contain','successfully deleted')
+        .and('contain',name)
+
   })

@@ -6,4 +6,9 @@ describe('service spec', () => {
     cy.get('[class*="add-route-btn"]').click()
     cy.addRoute('mocking','/mock')
   })
+
+  it('Delete the service', () => {
+    cy.deleteService('TestName','mocking','/default/services')
+  })
+
 })
